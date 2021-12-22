@@ -1,1 +1,1 @@
-web: gunicorn Appointments.wsgi
+web: gunicorn simplstorage.wsgi
