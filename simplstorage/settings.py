@@ -29,7 +29,7 @@ SECRET_KEY= os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['store4me.herokuapp.com',  'localhost']
 
 
 # Application definition
