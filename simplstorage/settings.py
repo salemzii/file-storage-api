@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
-#import django_heroku
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -186,5 +186,5 @@ AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
 AWS_S3_USE_SSL=True
 AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET_NAME
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 #april 23
