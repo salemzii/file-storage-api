@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY= config('SECRET_KEY')
+SECRET_KEY= os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -150,7 +150,7 @@ REST_FRAMEWORK = {
 }
 
 
-DEFAULT_FILE_STORAGE=config('DEFAULT_FILE_STORAGE')
+"""DEFAULT_FILE_STORAGE=config('DEFAULT_FILE_STORAGE')
 STATICFILES_STORAGE=config('STATICFILES_STORAGE')
 
 LINODE_BUCKET_NAME=config('LINODE_BUCKET_NAME')
@@ -165,7 +165,25 @@ AWS_ACCESS_KEY_ID=LINODE_BUCKET_ACCESS_KEY
 AWS_SECRET_ACCESS_KEY=LINODE_BUCKET_SECRET_KEY
 AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
 AWS_S3_USE_SSL=True
+AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET_NAME"""
+
+
+DEFAULT_FILE_STORAGE=os.environ['DEFAULT_FILE_STORAGE']
+STATICFILES_STORAGE=os.environ['STATICFILES_STORAGE']
+
+LINODE_BUCKET_NAME=os.environ['LINODE_BUCKET_NAME']
+LINODE_BUCKET_URL=os.environ['LINODE_BUCKET_URL']
+LINODE_BUCKET_REGION=os.environ['LINODE_BUCKET_REGION']
+
+LINODE_BUCKET_ACCESS_KEY=os.environ['LINODE_BUCKET_ACCESS_KEY']
+LINODE_BUCKET_SECRET_KEY=os.environ['LINODE_BUCKET_SECRET_KEY']
+
+AWS_S3_ENDPOINT_URL=os.environ['AWS_S3_ENDPOINT_URL']
+AWS_ACCESS_KEY_ID=LINODE_BUCKET_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY=LINODE_BUCKET_SECRET_KEY
+AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
+AWS_S3_USE_SSL=True
 AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET_NAME
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 #april 23
