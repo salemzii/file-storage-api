@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-25f7dn(z%5l6p@nacwy(=^uau47gxwlk#z3vdg4f1=dqde^(q#'
+SECRET_KEY= config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,21 +139,31 @@ MEDIA_URL= "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-DEFAULT_FILE_STORAGE=os.environ['DEFAULT_FILE_STORAGE']
-STATICFILES_STORAGE=os.environ['STATICFILES_STORAGE']
-
-LINODE_BUCKET_NAME=os.environ['LINODE_BUCKET_NAME']
-LINODE_BUCKET_URL=os.environ['LINODE_BUCKET_URL']
-LINODE_BUCKET_REGION=os.environ['LINODE_BUCKET_REGION']
-
-
-LINODE_BUCKET_ACCESS_KEY=os.environ['LINODE_BUCKET_ACCESS_KEY']
-LINODE_BUCKET_SECRET_KEY=os.environ['LINODE_BUCKET_SECRET_KEY']
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ]
+}
 
 
-AWS_S3_ENDPOINT_URL=os.environ['AWS_S3_ENDPOINT_URL']
+DEFAULT_FILE_STORAGE=config('DEFAULT_FILE_STORAGE')
+STATICFILES_STORAGE=config('STATICFILES_STORAGE')
+
+LINODE_BUCKET_NAME=config('LINODE_BUCKET_NAME')
+LINODE_BUCKET_URL=config('LINODE_BUCKET_URL')
+LINODE_BUCKET_REGION=config('LINODE_BUCKET_REGION')
+
+LINODE_BUCKET_ACCESS_KEY=config('LINODE_BUCKET_ACCESS_KEY')
+LINODE_BUCKET_SECRET_KEY=config('LINODE_BUCKET_SECRET_KEY')
+
+AWS_S3_ENDPOINT_URL=config('AWS_S3_ENDPOINT_URL')
 AWS_ACCESS_KEY_ID=LINODE_BUCKET_ACCESS_KEY
 AWS_SECRET_ACCESS_KEY=LINODE_BUCKET_SECRET_KEY
 AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
 AWS_S3_USE_SSL=True
 AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET_NAME
+
+
+#april 23

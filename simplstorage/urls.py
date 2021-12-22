@@ -25,4 +25,8 @@ urlpatterns = [
     path('api/upload_file', views.upload_file, name='upload_file'),
     path('api/files', views.get_files, name='get_files'),
     path('api/file/<slug:fileId>', views.get_file, name='get_file'),
+
+    path('api/upload_image', views.upload_image, name='upload_image'),
+    path('api/images', views.get_images, name='get_images'),
+    path('api/imagee/<slug:imageId>', views.get_image, name='get_image'),
 ]

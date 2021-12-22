@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import file_uploader
+from .models import file_uploader, image
 
 
 admin.site.register(file_uploader)
+admin.site.register(image)
 
-# Register your models here.

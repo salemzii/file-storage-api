@@ -18,3 +18,17 @@ class file_uploader(models.Model):
         return self.name
 
 
+
+class image(models.Model):
+    id = models.UUIDField(default=uuid.uuid4,
+                    primary_key=True,
+                    editable=False)
+    
+    name = models.CharField(max_length=18)
+    img = models.ImageField(upload_to="images")
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self) -> str:
+        return self.name
+
+        
