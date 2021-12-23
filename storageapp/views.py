@@ -31,6 +31,8 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 
+
+
 def test_js(request):
     return render(request, "test.html")
 
@@ -91,7 +93,10 @@ class AuthViewSet(viewsets.GenericViewSet):
         data['is_active'] = user.is_active
         data['is_staff'] = user.is_staff
 
+
+
         return Response(data=data, status=status.HTTP_201_CREATED)
+
 
 
     @action(methods=['POST', ], detail=False)
@@ -99,6 +104,7 @@ class AuthViewSet(viewsets.GenericViewSet):
         logout(request)
         data = {'success': 'Sucessfully logged out'}
         return Response(data=data, status=status.HTTP_200_OK)
+
 
 
     @action(methods=['POST'], detail=False, permission_classes=[IsAuthenticated, ])
