@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from storageapp import views
 
+from rest_framework import routers
+from storageapp.views import AuthViewSet
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +32,10 @@ urlpatterns = [
     path('api/upload_image', views.upload_image, name='upload_image'),
     path('api/images', views.get_images, name='get_images'),
     path('api/imagee/<slug:imageId>', views.get_image, name='get_image'),
+
 ]
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register('api/auth', AuthViewSet, basename='auth')
+
+urlpatterns += router.urls

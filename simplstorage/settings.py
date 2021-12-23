@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storageapp',
     'rest_framework',
-    'storages'
+    'rest_framework.authtoken',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -147,26 +148,16 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'rest_framework.authentication.BasicAuthentication',
+    'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
 }
 
-
-"""DEFAULT_FILE_STORAGE=config('DEFAULT_FILE_STORAGE')
-STATICFILES_STORAGE=config('STATICFILES_STORAGE')
-
-LINODE_BUCKET_NAME=config('LINODE_BUCKET_NAME')
-LINODE_BUCKET_URL=config('LINODE_BUCKET_URL')
-LINODE_BUCKET_REGION=config('LINODE_BUCKET_REGION')
-
-LINODE_BUCKET_ACCESS_KEY=config('LINODE_BUCKET_ACCESS_KEY')
-LINODE_BUCKET_SECRET_KEY=config('LINODE_BUCKET_SECRET_KEY')
-
-AWS_S3_ENDPOINT_URL=config('AWS_S3_ENDPOINT_URL')
-AWS_ACCESS_KEY_ID=LINODE_BUCKET_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY=LINODE_BUCKET_SECRET_KEY
-AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
-AWS_S3_USE_SSL=True
-AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET_NAME"""
 
 
 DEFAULT_FILE_STORAGE=os.environ['DEFAULT_FILE_STORAGE']

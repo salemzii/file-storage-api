@@ -31,4 +31,12 @@ class image(models.Model):
     def __str__(self) -> str:
         return self.name
 
-        
+
+"""class videos(models.Model):
+    id = models.UUIDField(
+        default= uuid.uuid4, 
+        primary_key=True,
+        editable=False
+    )
+    name = models.CharField(max_length=18)
+    video = models.f"""        
