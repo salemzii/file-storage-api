@@ -46,8 +46,10 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'storages',
     'accounts',
+    'frontend',
     'graphQL_Apis',
     'graphene_django',
+    'crispy_forms',
 ]
 
 
@@ -155,7 +157,6 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-    'rest_framework.authentication.BasicAuthentication',
     'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
@@ -182,5 +183,8 @@ AWS_S3_REGION_NAME=LINODE_BUCKET_REGION
 AWS_S3_USE_SSL=True
 AWS_STORAGE_BUCKET_NAME=LINODE_BUCKET_NAME
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'home'
 #django_heroku.settings(locals())
 #april 23

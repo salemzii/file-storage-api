@@ -34,7 +34,11 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 def test_js(request):
-    return render(request, "test.html")
+    return render(request, "home.html")
+
+
+def tailwind(request):
+    return render(request, 'tailwind.html')
 
 
 class AuthViewSet(viewsets.GenericViewSet):
@@ -147,7 +151,7 @@ def upload_file(request):
 @permission_classes((IsAuthenticated,))
 def get_files(request):
     try:
-        files = file_uploader.objects.all()
+        files = file_uploader.objects.filter(user = request.user.id)
         serializer = file_uploader_serializer(files, many=True)
         return Response(serializer.data, status.HTTP_302_FOUND)
     except Exception as e:
@@ -187,7 +191,7 @@ def upload_image(request):
 @permission_classes((IsAuthenticated,))
 def get_images(request):
     try:
-        files = image.objects.all()
+        files = image.objects.filter(user = request.user.id)
         serializer = image_serializer(files, many=True)
         return Response(serializer.data, status.HTTP_302_FOUND)
     except Exception as e:
