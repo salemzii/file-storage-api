@@ -29,7 +29,7 @@ from graphQL_Apis.schema import schema
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
 
     path('home', frontendviews.home, name= 'home'),
 
