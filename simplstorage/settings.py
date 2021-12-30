@@ -15,7 +15,7 @@ import os
 from decouple import config
 import dj_database_url
 
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -193,5 +193,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 #april 23
