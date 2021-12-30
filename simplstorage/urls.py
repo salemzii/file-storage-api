@@ -32,6 +32,10 @@ urlpatterns = [
     path(r'^admin/', admin.site.urls),
 
     path('home', frontendviews.home, name= 'home'),
+    path('upload_file', frontendviews.upload_file, name='uploadFILE'),
+    path('upload_image', frontendviews.upload_image, name='uploadIMAGE'),
+    path('my_images', frontendviews.my_images, name='myimages'),
+    path('my_files', frontendviews.my_files, name='myfiles'),
 
     path('signup', accountViews.signup, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),

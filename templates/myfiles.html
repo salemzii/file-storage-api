@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <article class="media content-section">
+    {% for file in files %}
+      <a class="mr-2" href="{{ file.file.url }}">Download File</a>   
+        <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">{{ file.date|date:"F d, Y" }}</small>
+        </div>
+        <h2 class="article-title">{{ file.name }}</h2>
+        </div>   
+    {% endfor %}
+    <br> 
+  </article>
+{% endblock content %}
